@@ -17,7 +17,7 @@ class FortnoxAccessTokenTest < Minitest::Test
   def test_retrieve_calles_get
     stub_request(:get, "https://api.fortnox.se/3/customers").
       with(headers: { 'Authorization-Code'=>@authorization_code, 'Client-Secret'=>@client_secret }).
-      to_return(status: 200, body: { "ErrorInformation"=> "", "Authorization"=>{"AccessToken"=>'access_token'} }.to_json, headers: {"Content-Type"=> "application/json"})
+      to_return(status: 200, body: { "ErrorInformation"=>nil, "Authorization"=>{"AccessToken"=>'access_token'} }.to_json, headers: {"Content-Type"=> "application/json"})
     subject = FortnoxAccessToken.new(@authorization_code, client_secret: @client_secret)
 
     response = subject.retrieve!
@@ -30,7 +30,7 @@ class FortnoxAccessTokenTest < Minitest::Test
     ENV['FORTNOX_CLIENT_SECRET'] = @client_secret
     stub_request(:get, "https://api.fortnox.se/3/customers").
       with(headers: { 'Authorization-Code'=>@authorization_code, 'Client-Secret'=>@client_secret }).
-      to_return(status: 200, body: { "ErrorInformation"=> "", "Authorization"=>{"AccessToken"=>'access_token'} }.to_json, headers: {"Content-Type"=> "application/json"})
+      to_return(status: 200, body: { "ErrorInformation"=>nil, "Authorization"=>{"AccessToken"=>'access_token'} }.to_json, headers: {"Content-Type"=> "application/json"})
     subject = FortnoxAccessToken.new(@authorization_code)
 
     response = subject.retrieve!
@@ -43,7 +43,7 @@ class FortnoxAccessTokenTest < Minitest::Test
     ENV['FORTNOX_BASE_URL'] = base_url
     stub_request(:get, base_url + "customers").
       with(headers: { 'Authorization-Code'=>@authorization_code, 'Client-Secret'=>@client_secret }).
-      to_return(status: 200, body: { "ErrorInformation"=> "", "Authorization"=>{"AccessToken"=>'access_token'} }.to_json, headers: {"Content-Type"=> "application/json"})
+      to_return(status: 200, body: { "ErrorInformation"=>nil, "Authorization"=>{"AccessToken"=>'access_token'} }.to_json, headers: {"Content-Type"=> "application/json"})
     subject = FortnoxAccessToken.new(@authorization_code, client_secret: @client_secret)
 
     response = subject.retrieve!
