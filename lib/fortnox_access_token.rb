@@ -52,7 +52,7 @@ class FortnoxAccessToken
 
   def raise_if_failed!(response)
     error_information = response['ErrorInformation']
-    return if error_information.empty?
+    return if error_information.nil?
 
     raise RetrievalFailedError, error_information['Message']
   end
