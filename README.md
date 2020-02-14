@@ -10,5 +10,5 @@ For the gem to work it requires three parts:
 
 IMPORTANT: Each authorization code can only be used to request an access token once, if Fortnox has received the code before it will deactivate any integration using the access token.
 ```
-FortnoxAccessToken.new(authorization_code, client_secret).retrieve!
+FortnoxAccessToken.new(authorization_code, client_secret:).retrieve!
 ````
